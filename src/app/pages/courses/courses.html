@@ -3,6 +3,13 @@
 
     <h1>Kurser (FÖRBÄTTA HUVUDRUBRIK)</h1>
 
+    <!--Felhantering vid fel av hämting av data-->
+    @if(error()) {
+    <div class="error">
+        {{ error() }}
+    </div>
+    }
+
     <div class="course-list">
 
         <!--Loopar igenom alla kurser-->

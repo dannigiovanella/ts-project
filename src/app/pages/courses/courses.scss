@@ -1,0 +1,47 @@
+/*Styling för kurskorten*/
+
+/*Wrapper för sidan innehållande kurser*/
+.courses-page {
+    /*marginal mot navbar*/
+    margin-top: 150px;
+
+    h1 {
+        margin-bottom: 2rem;
+    }
+}
+
+/*Kurslista visas som grid. Antal kurser i grid är anpassad efter skärmstorlek*/
+/*varje kort är min 320px men får växa och vara flexibel (1fr)*/
+/*repeat och autofit gör att kort får upprepas och ta upp så myclet plats som får plats på slkärmen (eller maxbredd)*/
+.course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/*Styling för kurskorten*/
+.course-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background: #1c2844;
+    transition: 0.2s ease;
+
+}
+
+/*Animation vid hover. (Kort puttas upp lite)*/
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+/*Styling för kurskoden*/
+.course-code {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/*Styling för kursnamn*/
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
