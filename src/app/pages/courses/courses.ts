@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //Importerar interface för kursdata
@@ -27,6 +27,83 @@ export class Courses {
 
   //Signal för felhantering
   error = signal<string | null>(null);
+
+
+
+  /// FILTRERING ///
+
+  //Signal för sökterm
+  searchTerm = signal("");
+
+  //Signal för valt ämne
+  selectedSubject = signal("");
+
+
+  //Computed - Beräknar värdet av signal för filterade kurser
+  //Körs automatiskt om någon signal förändras
+  filteredCourses = computed(() => {
+
+    //Lagrar sökterm i lowercase och tar bort tomma mellanslag
+    const filter = this.searchTerm().trim().toLowerCase();
+
+    //Signa för att lagrar valt ämne (från dropdown)
+    const subjectFilter = this.selectedSubject();
+
+    //Varibel för filtrerade och kurser (kopia av array)
+    let processedCourses = this.courses();
+
+    /// FILTRERIGNVIA SÖKTERM ///
+    //Filterar kurser om sökterm finns
+    if (filter) {
+
+      //Filtrerar kurser
+      processedCourses = processedCourses.filter(course =>
+
+        //Söker efter kurskod eller kursnamn
+        course.courseCode.toLowerCase().includes(filter) ||
+        course.courseName.toLowerCase().includes(filter)
+
+      );
+    }
+
+    //// FILTERING VIA ÄMNE ///
+
+    //Kontrollerar om användaren valt ämne
+    if (subjectFilter) {
+      //Filtrerar kurser efter ämne
+      processedCourses = processedCourses.filter(course =>
+        //Jämför en kurs ämne med valt ämne
+        course.subject === subjectFilter
+
+      
+    }
+
+    //Returnerar filtrerade kurser
+    return processedCourses;
+
+  });
+
+///  SKAPA LISTA MED UNIKA ÄMNEN ///
+
+  //Computed signal för unika ämnen
+  subjects = computed(() => {
+
+    //Hämtar alla ämnen från kursarray
+    const allSubjects = this.courses().map(course => course.subject);
+
+    //Tar bort dubletter. Gör ämnen unika
+    const uniqueSubjects = [...new Set(allSubjects)];
+
+    //Sorterar ämnen i alfabetisk ordning
+    uniqueSubjects.sort();
+
+    //Returnerar färdig lista med unika ämnen
+    return uniqueSubjects;
+
+  });
+
+
+  ////// HÄMTAR DATA VIA SERVICE //////
 
   //Körs när komponenten laddas i DOM
   ngOnInit(): void {

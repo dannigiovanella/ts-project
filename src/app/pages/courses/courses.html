@@ -10,10 +10,47 @@
     </div>
     }
 
+    <!--Conainer för filtrering av kureser (sökterm och ämnen)-->
+    <div class="filters">
+
+        <!--Sökruta att söka efter kurser-->
+        <!--Uppdaterar signal vid input -->
+        <input type="text" placeholder="Sök kurser..." (input)="searchTerm.set($any($event.target).value)">
+
+        <!-- selectmeny för ämen -->
+        <!--Change körs när användare väljer. Hämtar valt värde. Uppdaterar signalen-->
+        <select (change)="selectedSubject.set($any($event.target).value)">
+
+            <!--Defaulttext-->
+            <option value="">
+                Alla ämnen
+            </option>
+
+            <!--Loopar igenom alla ämnen -->
+            @for(subject of subjects(); track subject) {
+
+            <!--Visar alla ämnen-->
+            <!--Value binder värde i dropdown till signal-->
+            <option [value]="subject">
+                {{ subject }}
+            </option>
+            }
+
+        </select>
+
+    </div>
+
+    <!-- Visar kurser. Antal träffar vid filtrering (eller laddning av sida) -->
+    <p class="filter-result">
+        {{ filteredCourses().length }} kurser hittade
+    </p>
+
+
+    <!--Conatainer för kurskort-->
     <div class="course-list">
 
         <!--Loopar igenom alla kurser-->
-        @for (course of courses(); track course.courseCode) {
+        @for (course of filteredCourses(); track course.courseCode) {
 
         <!--Kort innehållande kurskod, kursnamn, ämne och poäng-->
         <article class="course-card">
