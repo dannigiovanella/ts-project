@@ -12,8 +12,11 @@ export class MyScheduleService {
   //Startvärdet hämtas från localStorage (om det finns sparad data där)
   mySchedule = signal<CourseInterface[]>(this.loadFromStorage());
 
+  //signal för statusmeddelanden (feedback till användaren)
+  message = signal<string | null>(null);
+
   //Funktion för att lägga till en kurs i eget ramschema/kurslista
-  addCourse(course: CourseInterface) {
+  addCourse(course: CourseInterface): boolean {
 
     //Kontrollerar om kursen redan finns i schemat
     //find() returnerar kursobjektet om den hittas
@@ -21,58 +24,62 @@ export class MyScheduleService {
       c => c.courseCode === course.courseCode
     );
 
-    //Om kurs inte finns redan
-    if (!exists) {
-
-      //Uppdaterar signalen genom att skapa en ny array
-      //använder (...) för att behålla befintliga kurser
-      this.mySchedule.set([...this.mySchedule(), course]);
-
-      //Sparar i localStorage
-      this.saveToStorage();
-
+    //Om kurs redan finns så misslyckads det att lägga till
+    if (exists) {
+      return false;
     }
-  }
 
-  //Funktion för att ta bort en kurs från schemat
-  removeCourse(courseCode: string) {
+    //Uppdaterar signalen genom att skapa en ny array
+    //använder (...) för att behålla befintliga kurser
+    this.mySchedule.set([...this.mySchedule(), course]);
 
-    //Skapar en ny array som filtrerar bort kursen som matchar kurskoden
-    //filter returnerar alla kurser som inte matchar kurskod
-    const updated = this.mySchedule().filter(
-      c => c.courseCode !== courseCode
-    );
-
-    //Uppdaterar signalen med den nya listan
-    this.mySchedule.set(updated);
-
-    //Sparar den uppdaterade listan i localStorage
+    //Sparar i localStorage
     this.saveToStorage();
+
+    return true;
+
   }
+
+
+//Funktion för att ta bort en kurs från schemat
+removeCourse(courseCode: string) {
+
+  //Skapar en ny array som filtrerar bort kursen som matchar kurskoden
+  //filter returnerar alla kurser som inte matchar kurskod
+  const updated = this.mySchedule().filter(
+    c => c.courseCode !== courseCode
+  );
+
+  //Uppdaterar signalen med den nya listan
+  this.mySchedule.set(updated);
+
+  //Sparar den uppdaterade listan i localStorage
+  this.saveToStorage();
+}
 
   //Funktion som sparar schemat till localStorage
   private saveToStorage() {
-    //JSON.stringify används då localstorage bara kan lagra strängar
-    localStorage.setItem(
-      'schedule',
-      JSON.stringify(this.mySchedule())
-    );
-  }
+  //JSON.stringify används då localstorage bara kan lagra strängar
+  localStorage.setItem(
+    'schedule',
+    JSON.stringify(this.mySchedule())
+  );
+}
 
   //Funktion som laddar schemat från localStorage vid laddning av sida
   private loadFromStorage(): CourseInterface[] {
-    //Hämtar sparad data från localStorage
-    const data = localStorage.getItem('schedule');
+  //Hämtar sparad data från localStorage
+  const data = localStorage.getItem('schedule');
 
-    //Om det finns sparad data
-    if (data) {
+  //Om det finns sparad data
+  if (data) {
 
-      //Konverterar json sträng tillbaka till JavaScript objekt
-      return JSON.parse(data);
-    }
-    //Om ingen data finns returneras en tom array
-    return [];
+    //Konverterar json sträng tillbaka till JavaScript objekt
+    return JSON.parse(data);
   }
+  //Om ingen data finns returneras en tom array
+  return [];
+}
 }
 
 

@@ -35,6 +35,9 @@ export class Courses {
   //Signal för kursdata. array av CourseInterface med tomt startvärde
   courses = signal<CourseInterface[]>([]);
 
+  //Meddelande som visas i courses-sidan när kurs är tillagd
+  message = signal<string | null>(null);
+
   //Signal för felhantering
   error = signal<string | null>(null);
 
@@ -43,7 +46,20 @@ export class Courses {
 
   //Funktion som lägger till kurs i eget ramschema via service
   addToSchedule(course: CourseInterface) {
-    this.scheduleService.addCourse(course);
+   const result = this.scheduleService.addCourse(course);
+
+   //Feedback när användare lägger till kurs
+  if (result) {
+    this.message.set("Kurs tillagd i ditt ramschema");
+  } else {
+    this.message.set("Kursen finns redan i ditt ramschema");
+  }
+
+  //Tar bort meddelandet efter 3 sekunder
+  setTimeout(() => {
+    this.message.set(null);
+  }, 3000);
+    
   }
 
 

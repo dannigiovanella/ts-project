@@ -10,6 +10,7 @@
     </div>
     }
 
+
     <!--Conainer för filtrering av kureser (sökterm och ämnen)-->
     <div class="filters">
 
@@ -54,6 +55,13 @@
     </p>
 
 
+    <!--Feedback på att kurs är tillagd-->
+    @if(message()) {
+    <div class="message">
+        {{ message() }}
+    </div>
+    }
+
     <!--Conatainer för kurskort-->
     <div class="course-list">
 
@@ -83,6 +91,7 @@
             <button (click)="addToSchedule(course)">
                 Lägg till kurs
             </button>
+
         </article>
         }
 

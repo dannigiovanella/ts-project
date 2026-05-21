@@ -22,5 +22,6 @@ export class MyCourses {
     this.scheduleService.removeCourse(courseCode);
   }
 
+  message = this.scheduleService.message;
 
 }
