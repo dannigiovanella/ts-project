@@ -1,1 +1,31 @@
-<p>my-courses works!</p>
+<!--SIDA FÖR SPARADE KURSER-->
+
+
+<section class="my-schedule">
+
+  <h1>Ramschema - Valda kurser</h1>
+
+  <!--Visar antal kurser-->
+  <p>Antal kurser: {{ schedule().length }}</p>
+
+  <!--Loopar igenom alla valda kurser-->
+  @for(course of schedule(); track course.courseCode) {
+
+    <article class="schedule-card">
+
+      <h3>{{ course.courseName }}</h3>
+
+      <p>{{ course.courseCode }}</p>
+
+      <p>{{ course.points }} HP</p>
+
+      <!--Ta bort kurs-->
+      <button (click)="remove(course.courseCode)">
+        Ta bort
+      </button>
+
+    </article>
+
+  }
+
+</section>

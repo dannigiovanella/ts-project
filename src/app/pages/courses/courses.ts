@@ -8,7 +8,7 @@ import { CourseInterface } from '../../models/course-interface';
 import { CourseService } from '../../services/course-service';
 
 //Importerar service för att hantera kurser
-import { MyScheduleService } from '../../services/my-schedule';
+import { MyScheduleService } from '../../services/my-schedule-service';
 
 @Component({
   selector: 'app-courses',
@@ -21,13 +21,16 @@ import { MyScheduleService } from '../../services/my-schedule';
 //Klass för kurser. 
 export class Courses {
 
-  //Hämtar service med inject
+  //HÄMTAR SERVICE MED INJECT
   //Private då  variabeln bara kan användas inne i denna klass
 
   //service för kursdata
   private courseService = inject(CourseService);
   //service för hantering av kurser
   private scheduleService = inject(MyScheduleService);
+
+
+  //SIGNALS
 
   //Signal för kursdata. array av CourseInterface med tomt startvärde
   courses = signal<CourseInterface[]>([]);
@@ -37,12 +40,11 @@ export class Courses {
 
 
   /// LÄGG TILL KURS I EGET RAMSCHEMA (via sevice) ///
+
   //Funktion som lägger till kurs i eget ramschema via service
   addToSchedule(course: CourseInterface) {
     this.scheduleService.addCourse(course);
   }
-
-
 
 
   /// FILTRERING ///
@@ -163,7 +165,7 @@ export class Courses {
       },
 
 
-
+      //ERROR
       // Om nåt går fel vid API anrop (FÖRBÄTTRA DENNA SEN)
       error: () => {
         console.log("Nåt gick fel vid hämtning av kurser"),
