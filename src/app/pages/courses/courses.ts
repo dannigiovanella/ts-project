@@ -38,6 +38,9 @@ export class Courses {
   //Signal för valt ämne
   selectedSubject = signal("");
 
+  //Signal för sortering av valt sorteringsalterativ
+  sortBy = signal<"courseCode" | "courseName" | "subject" | "points">("courseCode");
+
 
   //Computed - Beräknar värdet av signal för filterade kurser
   //Körs automatiskt om någon signal förändras
@@ -75,15 +78,37 @@ export class Courses {
         //Jämför en kurs ämne med valt ämne
         course.subject === subjectFilter
 
-      
+      );
     }
+
+    /// SORTERING ///
+
+    //Sorterar kurser baserat på valt fält. (Gör kopia på array)
+    processedCourses = processedCourses.slice().sort((a, b) => {
+
+      //Kollar vad användare valt att sortera efter (dropdown)
+      const sortValue = this.sortBy();
+
+      //Om sortering är poäng
+      if (sortValue === "points") {
+        return a.points - b.points;
+      }
+
+      //Hämta värden som strängar
+      const valueA = String(a[sortValue]).toLowerCase();
+      const valueB = String(b[sortValue]).toLowerCase();
+
+      //Jämför två strängar efter alfabetisk ordning
+      return valueA.localeCompare(valueB);
+
+    });
 
     //Returnerar filtrerade kurser
     return processedCourses;
 
   });
 
-///  SKAPA LISTA MED UNIKA ÄMNEN ///
+  ///  SKAPA LISTA MED UNIKA ÄMNEN ///
 
   //Computed signal för unika ämnen
   subjects = computed(() => {
@@ -96,6 +121,7 @@ export class Courses {
 
     //Sorterar ämnen i alfabetisk ordning
     uniqueSubjects.sort();
+
 
     //Returnerar färdig lista med unika ämnen
     return uniqueSubjects;

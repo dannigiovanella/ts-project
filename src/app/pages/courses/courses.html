@@ -38,6 +38,14 @@
 
         </select>
 
+        <!-- Sortering av kurser på poäng, kursnamn, ämne eller kurskod-->
+        <select (change)="sortBy.set($any($event.target).value)">
+            <option value="courseCode">Kurskod</option>
+            <option value="courseName">Kursnamn</option>
+            <option value="subject">Ämne</option>
+            <option value="points">Poäng</option>
+        </select>
+
     </div>
 
     <!-- Visar kurser. Antal träffar vid filtrering (eller laddning av sida) -->
