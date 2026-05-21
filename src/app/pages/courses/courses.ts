@@ -7,6 +7,9 @@ import { CourseInterface } from '../../models/course-interface';
 //Importerar service för kursdata
 import { CourseService } from '../../services/course-service';
 
+//Importerar service för att hantera kurser
+import { MyScheduleService } from '../../services/my-schedule';
+
 @Component({
   selector: 'app-courses',
   imports: [CommonModule],
@@ -20,13 +23,25 @@ export class Courses {
 
   //Hämtar service med inject
   //Private då  variabeln bara kan användas inne i denna klass
+
+  //service för kursdata
   private courseService = inject(CourseService);
+  //service för hantering av kurser
+  private scheduleService = inject(MyScheduleService);
 
   //Signal för kursdata. array av CourseInterface med tomt startvärde
   courses = signal<CourseInterface[]>([]);
 
   //Signal för felhantering
   error = signal<string | null>(null);
+
+
+  /// LÄGG TILL KURS I EGET RAMSCHEMA (via sevice) ///
+  //Funktion som lägger till kurs i eget ramschema via service
+  addToSchedule(course: CourseInterface) {
+    this.scheduleService.addCourse(course);
+  }
+
 
 
 
@@ -146,6 +161,8 @@ export class Courses {
         this.courses.set(data);
 
       },
+
+
 
       // Om nåt går fel vid API anrop (FÖRBÄTTRA DENNA SEN)
       error: () => {
