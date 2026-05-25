@@ -10,7 +10,8 @@
   <nav>
     <a routerLink="/" routerLinkActive="active">Hem</a>
     <a routerLink="/courses" routerLinkActive="active">Kurser</a>
-    <a routerLink="/mycourses" routerLinkActive="active">Mina kurser</a>
+    <!--Länk till sida för Mina kurser. Visar även antal kurser och antal poäng som redan finns tillagda-->
+    <a routerLink="/mycourses" routerLinkActive="active">Mina kurser ({{ courseCount() }}st , {{ totalPoints() }} HP)</a>
   </nav>
 
 </header>

@@ -27,7 +27,7 @@ export class MyCourses {
     //Loopar igenom alla kurser i egna ramschemat
     this.schedule().forEach(course => {
 
-      //Lägger ihop tidigare totalsumma med kursens poäng
+      //Lägger ihop tidigare totalsumma med kurspoäng
       total = total + course.points;
 
     });
