@@ -12,8 +12,6 @@ export class MyScheduleService {
   //Startvärdet hämtas från localStorage (om det finns sparad data där)
   mySchedule = signal<CourseInterface[]>(this.loadFromStorage());
 
-  //signal för statusmeddelanden (feedback till användaren)
-  message = signal<string | null>(null);
 
   //Funktion för att lägga till en kurs i eget ramschema/kurslista
   addCourse(course: CourseInterface): boolean {
@@ -47,7 +45,7 @@ removeCourse(courseCode: string) {
   //Skapar en ny array som filtrerar bort kursen som matchar kurskoden
   //filter returnerar alla kurser som inte matchar kurskod
   const updated = this.mySchedule().filter(
-    c => c.courseCode !== courseCode
+    course => course.courseCode !== courseCode
   );
 
   //Uppdaterar signalen med den nya listan
