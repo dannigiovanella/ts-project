@@ -48,3 +48,19 @@ h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
+
+/*Pop-up för meddelande om tillagd kurs*/
+.message {
+    /*Fixerad positionering vid toppen av sidan*/
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background-color:  rgb(56, 189, 248);
+  color: rgb(15, 23, 42,);
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  /*Lägger pop up över alla lager (samma som navbar)*/
+  z-index: 1000;
+}

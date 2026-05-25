@@ -14,9 +14,9 @@
     justify-content: space-between;
     align-items: center;
     padding: 4rem;
-    background: rgba(15, 23, 42, 0.9);
+    background-color: rgb(15, 23, 42,);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    /*Lägger navbar övers*/
+    /*Lägger navbar över alla lager*/
     z-index: 1000;
 }
 
@@ -25,7 +25,7 @@
     font-weight: 700;
     /*ÄNDRA FONT FAMILY*/
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #38bdf8;
+    color: rgb(56, 189, 248);
 }
 
 nav {

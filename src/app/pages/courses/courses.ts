@@ -50,7 +50,8 @@ export class Courses {
 
    //Feedback när användare lägger till kurs
   if (result) {
-    this.message.set("Kurs tillagd i ditt ramschema");
+
+    this.message.set(`${course.courseName} tillagd i ramschemat`);
   } else {
     this.message.set("Kursen finns redan i ditt ramschema");
   }
@@ -58,7 +59,7 @@ export class Courses {
   //Tar bort meddelandet efter 3 sekunder
   setTimeout(() => {
     this.message.set(null);
-  }, 3000);
+  }, 4000);
     
   }
 
