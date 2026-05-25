@@ -3,7 +3,7 @@
 
 <section class="my-schedule">
 
-    <h1>Ramschema - Valda kurser</h1>
+    <h1>Mina kurser - Ramschema</h1>
 
 
     <!--Visar antal kurser-->
@@ -19,6 +19,9 @@
         <p>{{ course.courseCode }}</p>
 
         <p>{{ course.points }} HP</p>
+
+        <!--Länk till kursplan. Visas i nytt fönster-->
+        <a [href]="course.syllabus" target="_blank">Visa kursplan</a>
 
         <!--Ta bort kurs-->
         <button (click)="remove(course.courseCode)">

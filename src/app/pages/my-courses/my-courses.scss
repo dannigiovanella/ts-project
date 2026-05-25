@@ -1,0 +1,36 @@
+/*STYLINBG FÖR KURSORTEN PÅ SIDAN FÖR MINA KURSER*/
+
+
+/*Wrapper för sidan innehållande kurser*/
+.my-schedule {
+    /*marginal mot navbar*/
+    margin-top: 150px;
+
+    h1 {
+        margin-bottom: 2rem;
+    }
+}
+
+/*Styling för kurskorten*/
+.schedule-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background: #1c2844;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+/*Styling för kurskoden*/
+.course-code {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+/*Styling för kursnamn*/
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}

@@ -87,6 +87,9 @@
                 {{ course.points }} HP
             </p>
 
+            <!--Länk till kursplan. Visas i nytt fönster-->
+            <a [href]="course.syllabus" target="_blank">Visa kursplan</a>
+
             <!--Knapp att lägga till kurs-->
             <button (click)="addToSchedule(course)">
                 Lägg till kurs
