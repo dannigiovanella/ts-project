@@ -65,3 +65,18 @@ h2 {
     /*Lägger pop up över alla lager (samma som navbar)*/
     z-index: 1000;
 }
+
+
+/*Anpassning för mindre skärm*/
+
+@media (max-width: 700px) {
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .courses-page {
+        /*Marginal mot nabar*/
+        padding-bottom: 70px;
+    }
+
+}

@@ -38,3 +38,13 @@ h1 {
     font-weight: 700;
     transition: 0.2s ease;
 }
+
+/*Anpassning för mindre skärm*/
+
+@media (max-width: 700px) {
+
+    .hero {
+        /*Marginal mot nabar*/
+        padding-bottom: 70px;
+    }
+}

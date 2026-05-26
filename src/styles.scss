@@ -10,7 +10,6 @@
 body {
     background-color: rgb(15, 23, 42,);
     color: rgb(248, 250, 252);
-    /*BYT FONT FAMILY*/
     font-family: "Inter",Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     min-height: 100vh;
@@ -22,6 +21,7 @@ h1{
 
 a {
     text-decoration: none;
+    color: rgb(56, 189, 248);
 }
 
 .main {
@@ -29,4 +29,13 @@ a {
     width: 90%;
     margin: 0 auto;
     padding-top: 7rem;
+}
+
+/*Anpassning för mindre skärm*/
+
+@media (max-width: 700px) {
+
+    body{
+        font-size: 0.8rem;
+    }
 }

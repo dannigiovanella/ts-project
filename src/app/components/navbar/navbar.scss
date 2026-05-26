@@ -74,8 +74,10 @@ nav a:hover {
         display: flex;
         height: 70px;
         padding-top: 1rem;
+        padding-bottom: 1rem;
         padding: 1rem;
         overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
 
     }
 
@@ -86,14 +88,15 @@ nav a:hover {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 8px;
         text-align: center;
         height: 100%;
+        font-size: 0.7rem;
     }
 
     /*Döljer detaljer av tillagda kurser*/
     .course-sum {
-        display: none;
+        padding-bottom: 0.5rem;
+        font-size: 0.7rem;
     }
 
 }

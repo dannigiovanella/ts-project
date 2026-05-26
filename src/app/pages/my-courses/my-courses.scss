@@ -34,3 +34,18 @@ h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
 }
+
+
+/*Anpassning för mindre skärm*/
+
+@media (max-width: 700px) {
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .my-schedule {
+        /*Marginal mot nabar*/
+        padding-bottom: 70px;
+    }
+
+}
