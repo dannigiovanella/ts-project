@@ -3,9 +3,11 @@
 /*Wrapper för sidan innehållande kurser*/
 .courses-page {
     /*marginal mot navbar*/
-    margin-top: 150px;
+    padding-top: 3rem;
+    padding: 2rem;
 
     h1 {
+        padding-top: 1rem;
         margin-bottom: 2rem;
     }
 }
@@ -77,6 +79,7 @@ h2 {
     .courses-page {
         /*Marginal mot nabar*/
         padding-bottom: 70px;
+         padding: 1rem;
     }
 
 }

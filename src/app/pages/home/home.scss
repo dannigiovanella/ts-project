@@ -1,8 +1,10 @@
 /*STYLING FÖR STARTSIDA*/
 
 
+
 .hero {
-    margin-top: 150px;
+    margin-top: 80px;
+    padding-top: 5rem;
     display: flex;
     justify-content: space-between;
     gap: 2rem;
@@ -13,6 +15,7 @@
 .hero-text {
     max-width: 65ch;
     width: 50%;
+    padding-top: 5rem;
 }
 
 .hero-image {
