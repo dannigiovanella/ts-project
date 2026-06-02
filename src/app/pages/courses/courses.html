@@ -1,0 +1,105 @@
+<!--Visning av kurser. Information hämtas från kurslista (miun_courses)-->
+<section class="courses-page">
+
+    <h1>Kurser</h1>
+
+    <p class="intro-text">Hitta rätt kurs genom att söka, filtrera eller sortera i listan nedan.</p>
+
+    <!--Felhantering vid fel av hämting av data-->
+    @if(error()) {
+    <div class="error">
+        {{ error() }}
+    </div>
+    }
+
+
+    <!--Conainer för filtrering av kureser (sökterm och ämnen)-->
+    <div class="filters">
+
+        <!--Sökruta att söka efter kurser-->
+        <!--Uppdaterar signal vid input -->
+        <input type="text" placeholder="Sök kurser..." (input)="searchTerm.set($any($event.target).value)">
+
+        <!-- selectmeny för ämen -->
+        <!--Change körs när användare väljer. Hämtar valt värde. Uppdaterar signalen-->
+        <select (change)="selectedSubject.set($any($event.target).value)">
+
+            <!--Defaulttext-->
+            <option value="">
+                Alla ämnen
+            </option>
+
+            <!--Loopar igenom alla ämnen -->
+            @for(subject of subjects(); track subject) {
+
+            <!--Visar alla ämnen-->
+            <!--Value binder värde i dropdown till signal-->
+            <option [value]="subject">
+                {{ subject }}
+            </option>
+            }
+
+        </select>
+
+        <!-- Sortering av kurser på poäng, kursnamn, ämne eller kurskod-->
+        <select (change)="sortBy.set($any($event.target).value)">
+            <option value="courseCode">Kurskod</option>
+            <option value="courseName">Kursnamn</option>
+            <option value="subject">Ämne</option>
+            <option value="points">Poäng</option>
+        </select>
+
+    </div>
+
+    <!-- Visar kurser. Antal träffar vid filtrering (eller laddning av sida) -->
+    <p class="filter-result">
+        {{ filteredCourses().length }} kurser hittade
+    </p>
+
+
+    <!--Feedback på att kurs är tillagd-->
+    @if(message()) {
+    <div class="message">
+        {{ message() }}
+    </div>
+    }
+
+    <!--Conatainer för kurskort-->
+    <div class="course-list">
+
+        <!--Loopar igenom alla kurser-->
+        @for (course of filteredCourses(); track course.courseCode) {
+
+        <!--Kort innehållande kurskod, kursnamn, ämne och poäng-->
+        <article class="course-card">
+
+            <p class="course-code">
+                {{ course.courseCode }}
+            </p>
+
+            <h2>
+                {{ course.courseName }}
+            </h2>
+
+            <p>
+                {{ course.subject }}
+            </p>
+
+            <p>
+                {{ course.points }} HP
+            </p>
+
+            <!--Länk till kursplan. Visas i nytt fönster-->
+            <a [href]="course.syllabus" target="_blank">Visa kursplan</a>
+
+            <!--Knapp att lägga till kurs-->
+            <button (click)="addToSchedule(course)">
+                Lägg till kurs
+            </button>
+
+        </article>
+        }
+
+    </div>
+
+</section>

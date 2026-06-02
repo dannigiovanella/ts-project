@@ -1,0 +1,116 @@
+/*STYLING FÖR NAVBAR*/
+
+/*Navbar har fixaread positionering*/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7rem;
+    
+
+    /*Placerar elementen i varsitt hörn a sidan*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    background-color: rgb(15, 23, 42, );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    /*Lägger navbar över alla lager*/
+    z-index: 1000;
+}
+
+.inner-nav {
+    width: 100%;
+    max-width: 1700px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 1rem;
+}
+
+/*LOGOTYP/ skolans namn*/
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    /*ÄNDRA FONT FAMILY*/
+    font-family: "Montserrat",Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;  
+    color: rgb(56, 189, 248);
+}
+
+
+/*Navigationsmeny ( class - navigation)*/
+nav {
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    position: relative;
+    font-weight: 500;
+    color: rgb(56, 189, 248);
+    transition: 0.2s ease;
+}
+
+nav a:hover {
+    color: rgb(33, 109, 141);
+}
+
+/*Summering av tillagda kurser*/
+.course-sum {
+    color: rgb(111, 145, 160);
+}
+
+
+/*Anpassning för mindre skärmar*/
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    /*Navigationsmeny blir fixerad i botten på sidan*/
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgb(15, 23, 42, );
+        display: flex;
+        height: 85px;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding: 1rem;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    }
+
+    /*Position av länkarna*/
+    .navigation a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        font-size: 0.9rem;
+    }
+
+    /*Döljer detaljer av tillagda kurser*/
+    .course-sum {
+        padding-bottom: 0.5rem;
+        font-size: 0.7rem;
+    }
+
+}

@@ -1,0 +1,40 @@
+<!--SIDA FÖR SPARADE KURSER-->
+
+
+<section class="my-schedule">
+
+    <h1>Mina kurser - Ramschema</h1>
+
+
+    <!--Visar antal kurser-->
+    <p>Antal kurser: {{ schedule().length }}</p>
+
+    <!--Visar antal poäng för alla kurser-->
+    <p>
+        Totalt antal högskolepoäng: {{ totalPoints() }} HP
+    </p>
+
+    <!--Loopar igenom alla valda kurser-->
+    @for(course of schedule(); track course.courseCode) {
+
+    <article class="schedule-card">
+
+        <h3>{{ course.courseName }}</h3>
+
+        <p>{{ course.courseCode }}</p>
+
+        <p>{{ course.points }} HP</p>
+
+        <!--Länk till kursplan. Visas i nytt fönster-->
+        <a [href]="course.syllabus" target="_blank">Visa kursplan</a>
+
+        <!--Ta bort kurs-->
+        <button (click)="remove(course.courseCode)">
+            Ta bort
+        </button>
+
+    </article>
+
+    }
+
+</section>
