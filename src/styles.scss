@@ -7,30 +7,32 @@
     box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
+html,
+body {
+    height: auto;
+    margin: 0;
 }
 
 
 
-html{
-   background-color: rgb(11, 12, 19);
+html {
+    background-color: rgb(11, 12, 19);
 }
 
 
 body {
+    min-height: 100vh;
     max-width: 1700px;
-    margin: 0 auto;  
+    margin: 0 auto;
     background-color: rgb(15, 23, 42);
     color: rgb(248, 250, 252);
-    font-family: "Inter",Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Inter", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
 }
 
 
-h1{
-  font-family: "Montserrat",Segoe UI, Tahoma, Geneva, Verdana, sans-serif;  
+h1 {
+    font-family: "Montserrat", Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
 a {
@@ -41,8 +43,7 @@ a {
 /*klass för main*/
 .page {
     min-height: 100vh;
-    max-width: 1400px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding-top: 7rem;
     background-color: rgb(15, 23, 42);
@@ -52,7 +53,7 @@ a {
 
 @media (max-width: 700px) {
 
-    body{
+    body {
         font-size: 0.8rem;
     }
 }

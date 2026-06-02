@@ -1,7 +1,6 @@
-
 /*Styling för footer*/
 
-footer{
+footer {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -13,8 +12,11 @@ footer{
 
 /*ANPASSNING FÖR MINDRE SKÄRM*/
 @media (max-width: 800px) {
-    footer{
+    footer {
         flex-direction: column;
         gap: 2rem;
+
+        /*Marginal mot nabar*/
+        padding-bottom: 100px;
     }
 }
