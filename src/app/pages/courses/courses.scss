@@ -56,6 +56,7 @@
 .course-card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 0.5rem;
     padding: 1.5rem;
     border-radius: 15px;
@@ -65,10 +66,6 @@
 
 }
 
-/*Animation vid hover. (Kort puttas upp lite)*/
-.course-card:hover {
-    transform: translateY(-5px);
-}
 
 /*Styling för kurskoden*/
 .course-code {

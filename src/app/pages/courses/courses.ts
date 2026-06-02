@@ -33,7 +33,8 @@ export class Courses {
   //SIGNALS
 
   //Signal för kursdata. array av CourseInterface med tomt startvärde
-  courses = signal<CourseInterface[]>([]);
+  allCourses = signal<CourseInterface[]>([]);
+
 
   //Meddelande som visas i courses-sidan när kurs är tillagd
   message = signal<string | null>(null);
@@ -46,21 +47,21 @@ export class Courses {
 
   //Funktion som lägger till kurs i eget ramschema via service
   addToSchedule(course: CourseInterface) {
-   const result = this.scheduleService.addCourse(course);
+    const result = this.scheduleService.addCourse(course);
 
-   //Feedback när användare lägger till kurs
-  if (result) {
+    //Feedback när användare lägger till kurs
+    if (result) {
 
-    this.message.set(`${course.courseName} tillagd i ramschemat`);
-  } else {
-    this.message.set("Kursen finns redan i ditt ramschema");
-  }
+      this.message.set(`${course.courseName} tillagd i ramschemat`);
+    } else {
+      this.message.set("Kursen finns redan i ditt ramschema");
+    }
 
-  //Tar bort meddelandet efter 3 sekunder
-  setTimeout(() => {
-    this.message.set(null);
-  }, 4000);
-    
+    //Tar bort meddelandet efter 3 sekunder
+    setTimeout(() => {
+      this.message.set(null);
+    }, 4000);
+
   }
 
 
@@ -80,6 +81,11 @@ export class Courses {
   //Körs automatiskt om någon signal förändras
   filteredCourses = computed(() => {
 
+    //Om sökterm är tom, visa inga kurser (returnera tom array)
+    if (!this.searchTerm().trim() && !this.selectedSubject()) {
+      return [];
+    }
+
     //Lagrar sökterm i lowercase och tar bort tomma mellanslag
     const filter = this.searchTerm().trim().toLowerCase();
 
@@ -87,7 +93,7 @@ export class Courses {
     const subjectFilter = this.selectedSubject();
 
     //Varibel för filtrerade och kurser (kopia av array)
-    let processedCourses = this.courses();
+    let processedCourses = this.allCourses();
 
     /// FILTRERIGNVIA SÖKTERM ///
     //Filterar kurser om sökterm finns
@@ -148,7 +154,7 @@ export class Courses {
   subjects = computed(() => {
 
     //Hämtar alla ämnen från kursarray
-    const allSubjects = this.courses().map(course => course.subject);
+    const allSubjects = this.allCourses().map(course => course.subject);
 
     //Tar bort dubletter. Gör ämnen unika
     const uniqueSubjects = [...new Set(allSubjects)];
@@ -177,8 +183,7 @@ export class Courses {
       next: (data) => {
 
         //Uppdaterar signal med kursdata
-        this.courses.set(data);
-
+        this.allCourses.set(data);
       },
 
 
