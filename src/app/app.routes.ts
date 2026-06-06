@@ -6,6 +6,7 @@ import { Courses } from './pages/courses/courses';
 import { MyCourses } from './pages/my-courses/my-courses';
 import { NotFound } from './pages/not-found/not-found';
 
+// Router
 export const routes: Routes = [
      {
     path: "", component: Home

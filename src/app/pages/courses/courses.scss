@@ -1,4 +1,5 @@
-/*Styling för kurskorten*/
+
+/*STYLING FÖR KURSSIDAN*/
 
 /*Wrapper för sidan innehållande kurser*/
 .courses-page {
@@ -6,12 +7,14 @@
     padding-top: 3rem;
     padding: 2rem;
 
+    /*Huvudrubrik*/
     h1 {
         padding-top: 1rem;
         margin-bottom: 2rem;
     }
 }
 
+/*Kort introtext*/
 .intro-text {
     margin-bottom: 2rem;
     font-size: 1.3rem;
@@ -70,10 +73,11 @@
 
 }
 
+/*Knapp i kurskort*/
 .course-card button {
     padding: 0.3rem;
-    background: #38bdf8;
-    color: #0f172a;
+    background: rgb(56, 189, 248);
+    color: rgb(15, 23, 42);
     border-radius: 0.8rem;
     font-size: 1.1rem;
     font-weight: 700;

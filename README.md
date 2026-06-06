@@ -1,59 +1,75 @@
-# UniversityPlattform
+# Projekt Angular: Universitetsplattform med kursfiltering och eget ramschema
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+## Länk till webbplats
+https://ohara-university.netlify.app/
 
-## Development server
 
-To start a local development server, run:
+### Fiktivt universitet: Oharas Universitetet
+Beskrivning
 
-```bash
-ng serve
-```
+Oharas Kurskatalog är en webbapplikation utvecklad i Angular. Applikationen gör det möjligt för användaren att söka, filtrera och sortera kurser samt skapa ett personligt ramschema genom att spara valda kurser.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Projektet är utvecklat som en Single Page Application där navigering sker utan sidomladdning. Kursdata hämtas från en lokal JSON-fil och presenteras dynamiskt i användargränssnittet.  
 
-## Code scaffolding
+Projektet är utvecklat för att möta grundkraven för projektet men med ytterligare funktioner för möjlighet att nå högre betyg.  
+ Ytterligare funktioner/design:
+ - Startsida för att presentera webbplats
+ - Feedbackmeddelande vid interaktion med kurser i kurslistan
+ - Totalt sparade poäng/antal kurser sparade i ramschema visas i realtid i navbaren
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Grundkrav och funktioner:  
 
-```bash
-ng generate component component-name
-```
+ - Visa kursutbud från JSON-fil
+ - Fritextsökning på kurskod och kursnamn
+ - Filtrering efter ämne
+ - Sortering efter:
+     - Kurskod
+    - Kursnamn
+    - Ämne
+    - Högskolepoäng
+ - Spara kurser till eget ramschema
+ - Ta bort kurser från ramschemat
+ - Beräkning av totalt antal högskolepoäng
+ - Spara valda kurser i localStorage
+ - Dynamisk uppdatering med Angular Signals
+ - Responsiv design
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Tekniker
+Projektet är utvecklat med:
+HTML
+Angular
+TypeScript
+SCSS
+Router
+Signals
+HttpClient
+LocalStorage
 
-```bash
-ng generate --help
-```
+### Kursinformation/API
+Kursinformationen finns i filen:
 
-## Building
+public/miun_courses.json
 
-To build the project run:
+### HttpClieent och service
+Data hämtas via Angular HttpClient och hanteras genom en separat service (courses.service).  
+Ramschema hanteras med egen service (my-schedule-service)
 
-```bash
-ng build
-```
+### Statehantering
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Applikationen använder Signals för lokal statehantering.
 
-## Running unit tests
+Signals används bland annat för:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+ - Kursdata
+ - Filtrering
+ - Sortering
+ - Ramschema
+ - Feedbackmeddelanden
 
-```bash
-ng test
-```
+Computed signals används för:
 
-## Running end-to-end tests
+ - Filtrerade kurslistor
+ - Lista över unika ämnen
+ - Total mängd högskolepoäng
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

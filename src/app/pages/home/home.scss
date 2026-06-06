@@ -1,19 +1,20 @@
 /*STYLING FÖR STARTSIDA*/
 
 
-
+/*Wrapper för hela startsidans innehåll/hero*/
+/*bakgrundsbild som täcker sida med overlay*/
 .hero {
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     min-height: calc(100vh - 80px);
-
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/skola.webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+/*Wrapper för huvudrubrik och textinnehåll*/
 .hero-text {
     max-width: 65ch;
     width: 100%;
@@ -21,13 +22,13 @@
     padding-left: 5rem;
 }
 
-
+/*Huvudrubrik*/
 h1 {
     font-size: 3rem;
     line-height: 1.1;
     margin-bottom: 2rem;
 }
-
+/*Besrivningstext*/
 .description {
     font-size: 1.1rem;
     line-height: 1.8;
@@ -35,6 +36,7 @@ h1 {
     margin-bottom: 2rem;
 }
 
+/*Länk till kurser*/
 .homepage-btn {
     display: inline-block;
     width: 100%;

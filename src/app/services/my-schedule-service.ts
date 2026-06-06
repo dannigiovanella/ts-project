@@ -1,3 +1,6 @@
+
+// SERVICE FÖR ATT HANTERA RAMSCHEMA
+
 import { Injectable, signal } from '@angular/core';
 import { CourseInterface } from '../models/course-interface';
 
