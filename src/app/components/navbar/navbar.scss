@@ -14,7 +14,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 3rem;
-    background-color: rgb(15, 23, 42, );
+    background-color: rgb(15, 23, 42);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     /*Lägger navbar över alla lager*/
     z-index: 1000;
@@ -37,7 +37,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     /*ÄNDRA FONT FAMILY*/
-    font-family: "Montserrat",Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Montserrat","Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 1px;  
     color: rgb(56, 189, 248);
 }
@@ -83,7 +83,7 @@ nav a:hover {
         bottom: 0;
         left: 0;
         width: 100%;
-        background-color: rgb(15, 23, 42, );
+        background-color: rgb(15, 23, 42);
         display: flex;
         height: 85px;
         padding-top: 1rem;
